@@ -19,26 +19,38 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 
+## CoVar Project Structure
 
+### Input Data
+- Input data is expected in a tab-delimited text file format.
+- Rows represent samples, and columns represent genes.
+- The file includes both control and perturbed samples.
 
+### Code Files
 
-## Dataset (Input / Output) and Scripts.
+#### `constant.py`
+- Holds a list of parameters used across the project.
 
-Input is a text file with delimited by tabs. The rows are samples and the columns are genes. The rows contain both the control and perturbed samples. 
+#### `Main3.py`
+- Main script responsible for identifying variational and core genes in different runs.
+- Results are saved as pickle files containing lists with the format: `<Control matrix, Disease matrix, Gene Names, Mean squared, Variational, Knn, Community Labels, Core >`.
+- Result files are named "GList-i.p" from the i-th run.
 
-1. **constant.py:**     It has the list of parameters
+#### `read.py`
+- Reads and preprocesses the expression dataset.
 
-2. **Main.py:**         Main script that find the variational and core genes in the different runs. The results are saved in the form of a pickle file of lists in                           the following format *<Control matrix, Disease matrix, Gene Names, Mean squared, Variational, Knn, Community Labels, Core >*. File                                   "GList-i.p" is the result from the i-th run.
+#### `Genie.py`
+- Executes the GENIE3 model to identify inter-gene interactions.
 
-3. **read.py:**         It reads and preprocesses the expression dataset.
+#### `variation.py`
+- Contains modules for (1) variational gene identification and (2) network community detection.
 
-4. **Genie.py:**        It runs the GENIE3 model to find the inter-gene interaction.
+#### `Nearest.py`
+- Executes the nearest neighbor module.
 
-5. **variation.py:**    It has the modules for (1) variational gene identification and (2) network community detection.
+#### `Combined.py`
+- Given individual sample runs, determine nearest neighbor and core genes based on the combination of runs.
 
-6. **Nearest.py:**      It runs the nearest neighbor module.
-
-7. **Combined.py:**     Given the individual sample runs, it finds the nearest neighbor and core genes based on the combination of the runs.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
