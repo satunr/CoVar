@@ -62,13 +62,25 @@ There are two modules:
 
 ### Combined analysis (Combined.py)
 
-<p align="justify"> To make a robust inference, this module finds an aggregate nearest neighbor network across the $25$ runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: </p>
+<p align="justify"> To make a robust inference, this module finds an aggregate nearest neighbor network across the $I = 25$ runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: </p>
 
-`<Gene symbol, Cluster ID, Gene description, Frequency of that gene as core in 25 runs, Frequency of that gene as the nearest neighbor gene in 25 runs, 
- In-degree, Out-degree, Frequency of that gene as variational in 25 runs, Final core Gene]>` 
+`<Gene symbol, Cluster ID, Gene description, Frequency of that gene as core in I = 25 runs, Frequency of that gene as the nearest neighbor gene in I = 25 runs, 
+ In-degree, Out-degree, Frequency of that gene as variational in I = 25 runs, Final core Gene]>` 
  
 
- 
+ ## Implementation Steps
+
+ ### Main3.py: Generate $I (= 25)$ CoVar networks 
+
+1. Input: Expression data assigned to variable $fname$ in constant.py
+2. Run Main3.py
+3. Output: "Run`<Approach 1 or 2>`-i.p" [$i = 1, 2, \cdots, I$]
+
+ ### Combined.py: Generate integrated CoVar network
+
+1. Input: "Run`<Approach 1 or 2>`-i.p" [$i = 1, 2, \cdots, I$]
+2. Run Combined.py
+3. Output: `<Comb_Meta_Trimmed_2.gml>` (CoVar network) and CoVar spreadsheet enumerating variational, nearest neighbor, and core genes.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
