@@ -18,7 +18,6 @@ def update_(X, gene, mv, s, val):
 
 
 def eliminate(A, g_names, cut_off, cv_cutoff, D):
-
     X = {'Gene': [], 'M-value': [],
          'Sum(read count)': [], 'Include': []}
 
@@ -55,18 +54,15 @@ def readf(fname):
 
     g_names = l[0]
     g_names = [gene.replace('\n', '') for gene in g_names.split()]
-    # print (g_names)
-
-    # X = [('MATR3', 'ENSG00000280987.4'), ('PRORP', 'ENSG00000258790.1'), ('ST6GALNAC6', 'ENSG00000257524.6')]
-    # X = [g_names.index(x[1]) for x in X]
+    # print (len(g_names))
 
     A = []
     for i in range(1, len(l)):
+        print (len([float(val) for val in l[i].split()]))
         A.append([float(val) for val in l[i].split()])
 
     A = np.array(A)
-    # print (len(g_names), A.shape)
-    # print (X)
+    # print (A.shape)
 
     return A, g_names
 
@@ -114,11 +110,13 @@ def mappings(glist):
     mg = mygene.MyGeneInfo()
 
     # g_names = [gene[:gene.index('.')] for gene in glist]
-    g_names = [gene[5:] for gene in glist]
-    # ginfo = mg.querymany(g_names, scopes='ensembl.gene', returnall=True, species='human')
+    # g_names = [gene[5:] for gene in glist]
+    g_names = [gene for gene in glist]
 
+    # ginfo = mg.querymany(g_names, scopes='ensembl.gene', returnall=True, species='human')
     ginfo = mg.querymany(g_names, scopes='ensembl.gene', returnall=True)
     ginfo = ginfo['out']
+
     how_many = [0, 0]
 
     for i in range(len(ginfo)):
