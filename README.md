@@ -11,10 +11,9 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 
 
-## Description.
+## Overview.
 
-CoVar is a network analysis tool that applied machine learning and network inference on genomic data (such as gene expression data) to find core genes that explain the variations across control and perturbed samples. It creates a directed network (using a machine learning-based network inference approach called GENIE3 [1]) that captures the strength of regulatory interaction between each gene on another and identify genes of interest, called variational genes, that exhibit a difference in network properties between the control and perturbed networks. CoVar then creates a nearest-neighbor network of the variational genes and neighbor genes with the strongest interactions and identifies a subset of genes, termed core genes, that exhibit both coordination (i.e., strong mutual interaction) and reachability (i.e., having regulatory paths to nearest neighbor network genes.
-
+CoVar is a network analysis tool that leverages machine learning and network inference on genomic data, such as gene expression data. It employs the GENIE3 [1] machine learning-based network inference approach to construct a directed network, capturing regulatory interactions between genes. The tool identifies variational genes—genes showing differences in network properties between control and perturbed samples. CoVar then establishes a nearest-neighbor network of variational genes and their strongest interacting neighbors. Within this network, it defines core genes, characterized by both coordination (strong mutual interactions) and reachability (regulatory paths to nearest neighbor network genes).
 
 
 
