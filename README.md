@@ -74,24 +74,25 @@ There are two modules:
 
 1. **Input:** Expression data assigned to variable $fname$ in constant.py
 2. Run Main3.py
-3. **Output:** "Run`<Approach 1 or 2>`-i.p"
-[$i = 1, 2, \cdots, I$]
+3. **Output:** "Run`<Approach 1 or 2>`-i.p" (i-th run)
+
 
  ### Combined.py: Generate integrated CoVar network
 
-1. **Input:** "Run`<Approach 1 or 2>`-i.p"
-[$i = 1, 2, \cdots, I$]
-
-3. Run Combined.py
-4. **Output:** `<Comb_Trimmed_2.gml>` (CoVar network) and CoVar spreadsheet enumerating variational, nearest neighbor, and core genes.
+1. **Input:** "Run`<Approach 1 or 2>`-i.p" (i-th run)
+2. Run Combined.py
+3. **Output:** `<Comb_Trimmed_2.gml>` (CoVar network) and CoVar spreadsheet enumerating variational, nearest neighbor, and core genes.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-At present the code employs the yeast dataset (countMatrix2.txt) from the study on blocking the oxidation-phosphorylation pathways [2]. 
+At present the code employs the yeast dataset (countMatrix2.txt) from the study on blocking the oxidation-phosphorylation pathways [2] or a simulated expression dataset (Main3.txt) [3]. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 
 [1] V. Huynh-Thu, et al. "Inferring regulatory networks from expression data using tree-based methods." PloS one 5.9 (2010): e12776.
 
-[2] S. Liu S, et al. OXPHOS deficiency activates global adaptation pathways to maintain mitochondrial membrane potential. EMBO Rep 2021 Apr 7;22(4):e51606. PMID: 33655635
+[2] S. Liu S, et al. OXPHOS deficiency activates global adaptation pathways to maintain mitochondrial membrane potential. EMBO Rep 2021 Apr 7;22(4):e51606. PMID: 33655635.
+
+[3] K. Wang, et al. "Meta-analysis of inter-species liver co-expression networks elucidates traits associated with common human diseases." PLoS computational biology 5.12 (2009): e1000616.
+
