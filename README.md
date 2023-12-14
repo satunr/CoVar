@@ -72,15 +72,15 @@ There are two modules:
 
  ### Main3.py: Generate $I (= 25)$ CoVar networks 
 
-1. Input: Expression data assigned to variable $fname$ in constant.py
+1. **Input:** Expression data assigned to variable $fname$ in constant.py
 2. Run Main3.py
-3. Output: "Run`<Approach 1 or 2>`-i.p" [$i = 1, 2, \cdots, I$]
+3. **Output:** "Run`<Approach 1 or 2>`-i.p" [$i = 1, 2, \cdots, I$]
 
  ### Combined.py: Generate integrated CoVar network
 
-1. Input: "Run`<Approach 1 or 2>`-i.p" [$i = 1, 2, \cdots, I$]
+1. **Input:** "Run`<Approach 1 or 2>`-i.p" [$i = 1, 2, \cdots, I$]
 2. Run Combined.py
-3. Output: `<Comb_Meta_Trimmed_2.gml>` (CoVar network) and CoVar spreadsheet enumerating variational, nearest neighbor, and core genes.
+3. **Output:** `<Comb_Meta_Trimmed_2.gml>` (CoVar network) and CoVar spreadsheet enumerating variational, nearest neighbor, and core genes.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
