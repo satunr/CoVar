@@ -1,6 +1,6 @@
 # CoVar: Network Analysis Tool
 
-__author__ = "Satyaki Roy"
+__authors__ = "Satyaki Roy, Shehzad Sheikh, and Terrence Furey"
 
 __copyright__ = "Furey and Sheikh Labs, UNC Chapel Hill USA"
 
