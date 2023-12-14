@@ -3,7 +3,7 @@ import operator
 import pickle
 import pandas as pd
 import collections
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 from copy import deepcopy
 from variation import *
@@ -13,7 +13,7 @@ def create(Knn, lst):
     return deepcopy(Knn.subgraph(lst))
 
 
-def nearest2(G, I, K, approach, kPer = 15):
+def nearest2(G, I, K, approach, kPer = 100):
     knn = nx.DiGraph()
     knn.add_nodes_from(I)
     E2 = {}
@@ -37,18 +37,21 @@ def nearest2(G, I, K, approach, kPer = 15):
             val = percentile(node_index[u], K)
             new_edges = [key for key in node_index[u].keys() if node_index[u][key] >= val]
 
-            for k in range(min(kPer, len(new_edges))):
+            # for k in range(min(kPer, len(new_edges))):
+            #     knn.add_edge(new_edges[k][0], new_edges[k][1])
+
+            for k in range(len(new_edges)):
                 knn.add_edge(new_edges[k][0], new_edges[k][1])
 
     elif approach == 2:
+
         val = percentile(E2, K)
         E2 = {key: E2[key] for key in E2.keys() if E2[key] >= val}
 
         k = 0
         while True:
-            sub_edge = {key: E2[key] for key in E2.keys() if key[0] in list(knn.nodes()) or
-            key[1] in list(knn.nodes())}
 
+            sub_edge = {key: E2[key] for key in E2.keys() if key[0] in list(knn.nodes()) or key[1] in list(knn.nodes())}
             if len(sub_edge.keys()) == 0:
                 break
 
@@ -56,5 +59,8 @@ def nearest2(G, I, K, approach, kPer = 15):
             knn.add_edge(e[0], e[1])
             E2.pop(e, None)
             k = k + 1
+
+    isolated = list(nx.isolates(knn))
+    knn.remove_nodes_from(isolated)
 
     return knn

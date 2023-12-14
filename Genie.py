@@ -21,7 +21,6 @@ def multi(mu, r, num_samples):
 
     C = np.zeros((len(mu), len(mu)))
 
-
     for i in range(len(mu)):
         for j in range(len(mu)):
             C[i, j] = abs(np.corrcoef(y[:, i], y[:, j])[0, 1])
@@ -395,21 +394,23 @@ def GENIE3_single(expr_data, output_idx, input_idx, tree_method, K, ntrees):
 
 
 def create_graph(VIM3, g_names):
-    G = nx.DiGraph()
     print ('Count matrix shape', np.shape(VIM3))
+
+    '''
+    G = nx.DiGraph()
 
     for i in range(np.shape(VIM3)[0]):
         for j in range(np.shape(VIM3)[1]):
             if i == j:
                 continue
             G.add_edge(g_names[i], g_names[j], weight = VIM3[i, j])
+    '''
 
+    G = nx.from_numpy_matrix(np.matrix(VIM3), create_using=nx.DiGraph)
+    G.remove_edges_from([e for e in G.edges() if e[0] == e[1]])
+
+    mapping = {i: g_names[i] for i in range(len(g_names))}
+
+    G = nx.relabel_nodes(G, mapping)
     print ('Number of links: ', len(G.edges()))
-
-    # G = nx.from_numpy_matrix(np.matrix(VIM3), create_using=nx.DiGraph)
-    # mapping = {i: g_names[i] for i in range(len(g_names))}
-    # G = nx.relabel_nodes(G, mapping)
-
     return G
-
-

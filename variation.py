@@ -17,10 +17,28 @@ def percentile(dicts, per):
     return val
 
 
+def find_vars2(GList, con, dis, V, g_names):
+    con = deepcopy(con) / np.max(con)
+    dis = deepcopy(dis) / np.max(dis)
+
+    D = {}
+    for i in range(len(g_names)):
+        gene = g_names[i]
+
+        uC = deepcopy(con[i, :] + con[:, i])
+        uD = deepcopy(dis[i, :] + dis[:, i])
+
+        D[gene] = mean_squared_error(uC, uD)
+
+    GList.append(D)
+
+    val = percentile(D, V)
+    vars = [key for key in D.keys() if D[key] >= val]
+    return vars, GList
+
+
 def find_vars(GList, con, dis, V):
 
-    # con = GList[0]
-    # dis = GList[1]
     con_max = max([con[u][v]['weight'] for (u, v) in con.edges()])
     dis_max = max([dis[u][v]['weight'] for (u, v) in dis.edges()])
 
@@ -33,11 +51,40 @@ def find_vars(GList, con, dis, V):
     g_names = list(con.nodes())
     D = {}
     for u in g_names:
-        uC = list([con[u][gene]['weight'] for gene in g_names if u != gene]) + \
-             list([con[gene][u]['weight'] for gene in g_names if u != gene])
+        # uC = list([con[u][gene]['weight'] for gene in g_names if u != gene and con.has_edge(u, gene)])
+        #
+        #      list([con[gene][u]['weight'] for gene in g_names if u != gene])
+        #
+        # uD = list([dis[u][gene]['weight'] for gene in g_names if u != gene]) + \
+        #      list([dis[gene][u]['weight'] for gene in g_names if u != gene])
 
-        uD = list([dis[u][gene]['weight'] for gene in g_names if u != gene]) + \
-             list([dis[gene][u]['weight'] for gene in g_names if u != gene])
+        ind, out = [], []
+        for gene in g_names:
+            if con.has_edge(u, gene):
+                out.append(con[u][gene]['weight'])
+            else:
+                out.append(0.0)
+
+            if con.has_edge(gene, u):
+                ind.append(con[gene][u]['weight'])
+            else:
+                ind.append(0.0)
+
+        uC = deepcopy(out + ind)
+
+        ind, out = [], []
+        for gene in g_names:
+            if dis.has_edge(u, gene):
+                out.append(dis[u][gene]['weight'])
+            else:
+                out.append(0.0)
+
+            if dis.has_edge(gene, u):
+                ind.append(dis[gene][u]['weight'])
+            else:
+                ind.append(0.0)
+
+        uD = deepcopy(out + ind)
 
         D[u] = mean_squared_error(uC, uD)
 
