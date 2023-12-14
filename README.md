@@ -9,13 +9,13 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-## Overview.
+## 1. Overview
 <p align="justify"> CoVar is a network analysis tool that leverages machine learning and network inference on genomic data, such as gene expression data. It employs the GENIE3 [1] machine learning-based network inference approach to construct a directed network, capturing regulatory interactions between genes. The tool identifies variational genes—genes showing differences in network properties between control and perturbed samples. CoVar then establishes a nearest-neighbor network of variational genes and their strongest interacting neighbors. Within this network, it defines core genes, characterized by both coordination (strong mutual interactions) and reachability (regulatory paths to nearest neighbor network genes). </p>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 
-## CoVar Project Structure
+## 2. CoVar Project Structure
 <p align="justify"> 
  
 ### Input Data
@@ -51,7 +51,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 ----------------------------------------------------------------------------------------------------------------------------------------
  
-## Modules
+## 3. Modules
 There are two modules:
 
 ### Identification of variational and core genes (Main3.py)
@@ -68,7 +68,7 @@ There are two modules:
  In-degree, Out-degree, Frequency of that gene as variational in I = 25 runs, Final core Gene]>` 
  
 
- ## Implementation Steps
+ ## 4. Implementation Steps
 
  ### Main3.py: Generate $I (= 25)$ CoVar networks 
 
