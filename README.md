@@ -9,12 +9,8 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-
-
 ## Overview.
 <p align="justify"> CoVar is a network analysis tool that leverages machine learning and network inference on genomic data, such as gene expression data. It employs the GENIE3 [1] machine learning-based network inference approach to construct a directed network, capturing regulatory interactions between genes. The tool identifies variational genes—genes showing differences in network properties between control and perturbed samples. CoVar then establishes a nearest-neighbor network of variational genes and their strongest interacting neighbors. Within this network, it defines core genes, characterized by both coordination (strong mutual interactions) and reachability (regulatory paths to nearest neighbor network genes). </p>
-
-
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -53,7 +49,6 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 - Given individual sample runs, determine nearest neighbor and core genes based on the combination of runs.</p>
 
 
-
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 ## Modules
@@ -61,13 +56,13 @@ There are two modules:
 
 ### Identification of variational and core genes (Main3.py)
 
-<p align="justify"> This code eliminates lowly expressed genes, and invokes the GENIE3 module to identify, separately on the control and perturbed datasets, the weights w[u, v] representing the influence of each gene u on gene v. It then (1) marks the genes with the highest variation in network characteristics between the control and perturbed networks, (2) finds the nearest neighbor network comprising the variational genes and their nearest neighbors, and (3) identifies strongly connected clusters (or communities) within the nearest neighbor networks and core genes within each community.
+<p align="justify"> This code eliminates lowly expressed genes, and invokes the GENIE3 module to identify, separately on the control and perturbed datasets, the weights $w[u, v]$ representing the influence of each gene $u$ on gene $v$. It then (1) marks the genes with the highest variation in network characteristics between the control and perturbed networks, (2) finds the nearest neighbor network comprising the variational genes and their nearest neighbors, and (3) identifies strongly connected clusters (or communities) within the nearest neighbor networks and core genes within each community.
 
-The above steps are followed in each run. As mentioned earlier, the results are saved in the form of a pickle file of lists in the following format *<Control matrix, Disease matrix, Gene Names, Mean squared, Variational, Knn, Community Labels, Core >*. File "GList-i.p" is the result of the i-th run.
+The above steps are followed in each run. As mentioned earlier, the results are saved in the form of a pickle file of lists in the following format *<Control matrix, Disease matrix, Gene Names, Mean squared, Variational, Knn, Community Labels, Core >*. File "Run`<Approach 1 or 2>`-i.p" is the result of the i-th run.
 
 ### Combined analysis (Combined.py)
 
-To make a robust inference, this module finds an aggregate nearest neighbor network across the 25 runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: 
+To make a robust inference, this module finds an aggregate nearest neighbor network across the $25$ runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: 
 
 ['Gene symbol', 'Cluster ID', 'Gene description', 'Frequency of that gene as core in 25 runs', 'Frequency of that gene as the nearest neighbor gene in 25 runs', 
  'In-degree', 'Out-degree', 'Frequency of that gene as variational in 25 runs', 'Final core Gene']</p>
