@@ -20,7 +20,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 
 ## CoVar Project Structure
-
+<p align="justify"> 
 ### Input Data
 - Input data is expected in a tab-delimited text file format.
 - Rows represent samples, and columns represent genes.
@@ -34,7 +34,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 #### `Main3.py`
 - Main script responsible for identifying variational and core genes in different runs.
 - Results are saved as pickle files containing lists with the format: `<Control matrix, Disease matrix, Gene Names, Mean squared, Variational, Knn, Community Labels, Core >`.
-- Result files are named "GList-i.p" from the i-th run.
+- Result (pickle) files are named "Run{Approach 1 or 2}-i.p" from the i-th run.
 
 #### `read.py`
 - Reads and preprocesses the expression dataset.
@@ -49,7 +49,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 - Executes the nearest neighbor module.
 
 #### `Combined.py`
-- Given individual sample runs, determine nearest neighbor and core genes based on the combination of runs.
+- Given individual sample runs, determine nearest neighbor and core genes based on the combination of runs.</p>
 
 
 
