@@ -64,8 +64,9 @@ The above steps are followed in each run. As mentioned earlier, the results are 
 
 To make a robust inference, this module finds an aggregate nearest neighbor network across the $25$ runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: 
 
-['Gene symbol', 'Cluster ID', 'Gene description', 'Frequency of that gene as core in $25$ runs', 'Frequency of that gene as the nearest neighbor gene in $25$ runs', 
- 'In-degree', 'Out-degree', 'Frequency of that gene as variational in $25$ runs', 'Final core Gene']</p>
+`Gene symbol, Cluster ID, Gene description, Frequency of that gene as core in 25 runs, Frequency of that gene as the nearest neighbor gene in 25 runs, 
+ In-degree, Out-degree, Frequency of that gene as variational in $25$ runs, Final core Gene]>`
+ </p>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
