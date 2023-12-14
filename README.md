@@ -85,7 +85,7 @@ There are two modules:
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-At present the code employs the yeast dataset (countMatrix2.txt) from the study on blocking the oxidation-phosphorylation pathways [2] or a simulated expression dataset (Main3.txt) [3]. 
+At present the code employs the yeast dataset (**countMatrix2.txt**) from the study on blocking the oxidation-phosphorylation pathways [2] or a simulated expression dataset (**Main3.txt**) [3]. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
