@@ -8,7 +8,7 @@ import pickle
 import math
 import pandas as pd
 
-from networkx.algorithms.community.centrality import girvan_newman
+# from networkx.algorithms.community.centrality import girvan_newman
 from Nearest import *
 from variation import *
 from scipy import stats
@@ -54,7 +54,17 @@ def color_nodes(Knn, Cr, labels):
     return H
 
 
+def check_presence(g_names, glist):
+
+    for gene in glist:
+        if gene in g_names:
+            print (gene, 'yes')
+        else:
+            print (gene, 'no')
+
+
 def main(ind):
+
     # STEP 1: Read count matrix
     data, g_names = readf(fname)
 
@@ -63,10 +73,9 @@ def main(ind):
     print (extract)
 
     data = data[extract, :]
-    print (np.shape(data))
 
-    data, g_names = remove_noncoding(data, g_names)
-    print (len(g_names))
+    # data, g_names = remove_noncoding(data, g_names)
+    # print (len(g_names))
 
     # Find TPM
     # lengths = read_annotations('annotationMatrix2.csv')
@@ -82,15 +91,17 @@ def main(ind):
     # check(g_names)
 
     # STEP 2: Eliminate lowly expressed genes
-    D = None
-    # D = pickle.load(open('M-values.p', 'rb'))
-    data, g_names, D = eliminate(data, g_names, cut_off, cv_cutoff, D)
+    # D = None
+    D = pickle.load(open('M-values.p', 'rb'))
+    # data, g_names, D = eliminate(data, g_names, cut_off, cv_cutoff, D)
     pickle.dump([data, g_names], open('Y.p', 'wb'))
     print (len(g_names))
 
     [data, g_names] = pickle.load(open('Y.p', 'rb'))
     print ('Number of genes left. ', len(g_names))
     print (len(g_names), np.shape(data))
+
+    # check_presence(g_names, ['DEFA5', 'DEFA6', 'REG1A', 'REG3A', 'CXCL5'])
 
     # STEP 3: Normalize dataset
     data[-1, :] += 0.01
@@ -105,32 +116,36 @@ def main(ind):
     GList = []
     con, dis = None, None
     for i in range(2):
+
         S[0].append(g_names)
         S[1].append(data[X[i]: X[i + 1], :])
 
         # STEP 4a: Create genie matrix and isolate gene names
         VIM3 = GENIE3(data[X[i]: X[i + 1], :], nthreads = nth, tree_method=tree_method, ntrees = ntrees)
         VIM3 = VIM3/np.max(VIM3)
-        print (np.shape(VIM3))
-
         GList.append(VIM3)
 
         # STEP 4b: Create genie graph
         G = create_graph(VIM3, g_names)
+        print (len(G), len(G.edges()))
+
         S[2].append([G, VIM3])
 
         if i == 0:
-            con = deepcopy(G)
+            con = deepcopy(VIM3)
         elif i == 1:
-            dis = deepcopy(G)
+            dis = deepcopy(VIM3)
             GList.append(G)
 
-    vg, GList = find_vars(GList, con, dis, V)
+    vg, GList = find_vars2(GList, con, dis, V, g_names)
+    print ('Variational nodes.', vg)
     GList.append(vg)
 
     # STEP 5: Find k-nearest neighbor graph on disease graph
-    knn = nearest2(dis, vg, K, approach)
+    knn = nearest2(GList[2], vg, K, approach)
     print (len(knn), len(knn.edges()))
+    # exit(1)
+
     GList.append(knn)
 
     # Find communities
@@ -146,13 +161,15 @@ def main(ind):
         else:
             c = deepcopy(list(nx.k_core(create(knn, subset)).nodes()))
         Cr.append(c)
-    print ([len(Cr[i]) for i in range(len(Cr))])
+
+    print ('Communities.', [Cr[i] for i in range(len(Cr))])
 
     GList.append(Cr)
-    pickle.dump(GList, open('GList-Macro-a-' + str(ind) + '.p', 'wb'))
+    pickle.dump(GList, open('Run2-' + str(ind) + '.p', 'wb'))
+    # exit(1)
 
 
-for ind in range(1):
+for ind in range(how_many_runs):
     # Each run
     print ('Run.', ind)
     main(ind)
@@ -177,4 +194,3 @@ for ind in range(1):
     Knn = color_nodes(Knn, Cr, labels)
     # nx.write_gml(Knn, 'Knn.gml')
     '''
-
