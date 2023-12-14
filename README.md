@@ -50,26 +50,24 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
-
-<p align="justify"> 
  
 ## Modules
 There are two modules:
 
 ### Identification of variational and core genes (Main3.py)
 
-This code eliminates lowly expressed genes and invokes the GENIE3 module to identify, separately on the control and perturbed datasets, the weights $w_{u, v} \in [0, 1]$ representing the influence of each gene $u$ on gene $v$. It then (1) marks the genes with the highest variation in network characteristics between the control and perturbed networks, (2) finds the nearest neighbor network comprising the variational genes and their nearest neighbors, and (3) identifies strongly connected clusters (or communities) within the nearest neighbor networks and core genes within each community.
+<p align="justify"> This code eliminates lowly expressed genes and invokes the GENIE3 module to identify, separately on the control and perturbed datasets, the weights $w_{u, v} \in [0, 1]$ representing the influence of each gene $u$ on gene $v$. It then (1) marks the genes with the highest variation in network characteristics between the control and perturbed networks, (2) finds the nearest neighbor network comprising the variational genes and their nearest neighbors, and (3) identifies strongly connected clusters (or communities) within the nearest neighbor networks and core genes within each community.  </p>
 
-The above steps are followed in each run. As mentioned earlier, the results are saved in the form of a pickle file of lists in the following format *<Control matrix, Disease matrix, Gene Names, Mean squared, Variational, Knn, Community Labels, Core >*. File "Run`<Approach 1 or 2>`-i.p" is the result of the $i$-th run.
+<p align="justify"> The above steps are followed in each run. As mentioned earlier, the results are saved in the form of a pickle file of lists in the following format *<Control matrix, Disease matrix, Gene Names, Mean squared, Variational, Knn, Community Labels, Core >*. File "Run`<Approach 1 or 2>`-i.p" is the result of the $i$-th run. </p>
 
 ### Combined analysis (Combined.py)
 
-To make a robust inference, this module finds an aggregate nearest neighbor network across the $25$ runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: 
+<p align="justify"> To make a robust inference, this module finds an aggregate nearest neighbor network across the $25$ runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: </p>
 
 `<Gene symbol, Cluster ID, Gene description, Frequency of that gene as core in 25 runs, Frequency of that gene as the nearest neighbor gene in 25 runs, 
  In-degree, Out-degree, Frequency of that gene as variational in 25 runs, Final core Gene]>` 
  
- </p>
+
  
 
 ----------------------------------------------------------------------------------------------------------------------------------------
