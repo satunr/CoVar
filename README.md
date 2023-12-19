@@ -31,7 +31,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 ### Step 2: Generate aggregated CoVar network
 
-<p align="justify"> This script ensures robust inference by finding an aggregate nearest neighbor network across multiple runs. It identifies communities within this network and core genes within each community. The final output is a spreadsheet with detailed information on nearest neighbor genes. </p>
+<p align="justify"> This script ensures robust inference by finding an aggregate nearest neighbor network across multiple runs. It identifies communities within this network and core genes within each community. The final output is a spreadsheet with detailed information on nearest neighbor genes.</p>
 
 **Execution Narrative**
 
@@ -41,7 +41,8 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 **Output.** Obtain `<Comb_Trimmed_2.gml>` (CoVar network) and a spreadsheet enumerating variational, nearest neighbor, and core genes.
 
-By following these steps, you can effectively run CoVar, extracting valuable insights into variational and core genes across multiple iterations. The combination of Main3.py and Combined.py ensures a comprehensive analysis, providing a deeper understanding of biological networks.
+<p align="justify">By following these steps, you can effectively run CoVar, extracting valuable insights into variational and core genes across multiple iterations. The combination of Main3.py and Combined.py ensures a comprehensive analysis, providing a deeper understanding of biological networks.</p>
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
