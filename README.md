@@ -28,7 +28,7 @@ There are two modules:
 1. **Input:** Expression data assigned to variable $fname$ in constant.py
 2. Run Main3.py
 3. **Output:** "Run`<Approach 1 or 2>`-i.p" (i-th run)
-4. 
+
 ### Combined analysis (Combined.py)
 
 <p align="justify"> To make a robust inference, this module finds an aggregate nearest neighbor network across the $I = 25$ runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: </p>
