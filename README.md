@@ -21,7 +21,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 ><p align="justify"> This script eliminates lowly expressed genes and leverages the GENIE3 module to identify the influence of each gene on others. It then marks genes with the highest variation in network characteristics, forms nearest-neighbor networks, and identifies strongly connected clusters and core genes within each community.  </p>
 
->**Execution Narrative**
+**Execution Narrative**
 
 >**Input.** Ensure the expression data is assigned to the variable 'fname' in constant.py.
 
