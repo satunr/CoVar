@@ -21,8 +21,6 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 <p align="justify"> This script eliminates lowly expressed genes and leverages the GENIE3 module to identify the influence of each gene on others. It then marks genes with the highest variation in network characteristics, forms nearest-neighbor networks, and identifies strongly connected clusters and core genes within each community.  </p>
 
-**Execution Narrative**
-
 **Input.** Ensure the expression data is assigned to the variable 'fname' in constant.py.
 
 **Run Main3.py.** Execute the script to perform the identification process.
@@ -32,8 +30,6 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 ### Step 2: Generate aggregated CoVar network
 
 <p align="justify"> This script ensures robust inference by finding an aggregate nearest neighbor network across multiple runs. It identifies communities within this network and core genes within each community. The final output is a spreadsheet with detailed information on nearest neighbor genes.</p>
-
-**Execution Narrative**
 
 **Input.** Provide the "Run`<Approach 1 or 2>`-i.p" files from the Main3.py runs.
 
