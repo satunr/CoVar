@@ -17,30 +17,31 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 ## 2. Implementation Steps
 There are two modules:
 
-### Identification of variational and core genes (Main3.py)
+### Step 1. Identification of variational and core genes 
 
-<p align="justify"> This code eliminates lowly expressed genes and invokes the GENIE3 module to identify, separately on the control and perturbed datasets, the weights $w_{u, v} \in [0, 1]$ representing the influence of each gene $u$ on gene $v$. It then (1) marks the genes with the highest variation in network characteristics between the control and perturbed networks, (2) finds the nearest neighbor network comprising the variational genes and their nearest neighbors, and (3) identifies strongly connected clusters (or communities) within the nearest neighbor networks and core genes within each community.  </p>
+<p align="justify"> This script eliminates lowly expressed genes and leverages the GENIE3 module to identify the influence of each gene on others. It then marks genes with the highest variation in network characteristics, forms nearest-neighbor networks, and identifies strongly connected clusters and core genes within each community.  </p>
 
-<p align="justify"> The above steps are followed in each run. As mentioned earlier, the results are saved in the form of a pickle file of lists in the following format *<Control matrix, Disease matrix, Gene Names, Mean squared, Variational, Knn, Community Labels, Core >*. File "Run`<Approach 1 or 2>`-i.p" is the result of the $i$-th run. </p>
+**Execution Narrative**
 
- ### Main3.py: Generate $I (= 25)$ CoVar networks 
+**Input.** Ensure the expression data is assigned to the variable 'fname' in constant.py.
 
-1. **Input:** Expression data assigned to variable $fname$ in constant.py
-2. Run Main3.py
-3. **Output:** "Run`<Approach 1 or 2>`-i.p" (i-th run)
+**Run Main3.py.** Execute the script to perform the identification process.
 
-### Combined analysis (Combined.py)
+**Output.** Save results in "Run`<Approach 1 or 2>`-i.p" files, where i represents the run number.
 
-<p align="justify"> To make a robust inference, this module finds an aggregate nearest neighbor network across the $I = 25$ runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: </p>
+### Step 2: Generate aggregated CoVar network
 
-`<Gene symbol, Cluster ID, Gene description, Frequency of that gene as core in I = 25 runs, Frequency of that gene as the nearest neighbor gene in I = 25 runs, 
- In-degree, Out-degree, Frequency of that gene as variational in I = 25 runs, Final core Gene]>` 
+<p align="justify"> This script ensures robust inference by finding an aggregate nearest neighbor network across multiple runs. It identifies communities within this network and core genes within each community. The final output is a spreadsheet with detailed information on nearest neighbor genes. </p>
 
-  ### Combined.py: Generate integrated CoVar network
+**Execution Narrative**
 
-1. **Input:** "Run`<Approach 1 or 2>`-i.p" (i-th run)
-2. Run Combined.py
-3. **Output:** `<Comb_Trimmed_2.gml>` (CoVar network) and CoVar spreadsheet enumerating variational, nearest neighbor, and core genes.
+**Input.** Provide the "Run<Approach 1 or 2>-i.p" files from the Main3.py runs.
+
+**Run Combined.py.** Execute the script to integrate information and generate the CoVar network.
+
+**Output.** Obtain `<Comb_Trimmed_2.gml>` (CoVar network) and a spreadsheet enumerating variational, nearest neighbor, and core genes.
+
+By following these steps, you can effectively run CoVar, extracting valuable insights into variational and core genes across multiple iterations. The combination of Main3.py and Combined.py ensures a comprehensive analysis, providing a deeper understanding of biological networks.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
