@@ -13,9 +13,38 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 <p align="justify"> CoVar is a network analysis tool that leverages machine learning and network inference on genomic data, such as gene expression data. It employs the GENIE3 [1] machine learning-based network inference approach to construct a directed network, capturing regulatory interactions between genes. The tool identifies variational genes—genes showing differences in network properties between control and perturbed samples. CoVar then establishes a nearest-neighbor network of variational genes and their strongest interacting neighbors. Within this network, it defines core genes, characterized by both coordination (strong mutual interactions) and reachability (regulatory paths to nearest neighbor network genes). </p>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
+ 
+## 2. Implementation Steps
+There are two modules:
 
+### Identification of variational and core genes (Main3.py)
 
-## 2. CoVar Project Structure
+<p align="justify"> This code eliminates lowly expressed genes and invokes the GENIE3 module to identify, separately on the control and perturbed datasets, the weights $w_{u, v} \in [0, 1]$ representing the influence of each gene $u$ on gene $v$. It then (1) marks the genes with the highest variation in network characteristics between the control and perturbed networks, (2) finds the nearest neighbor network comprising the variational genes and their nearest neighbors, and (3) identifies strongly connected clusters (or communities) within the nearest neighbor networks and core genes within each community.  </p>
+
+<p align="justify"> The above steps are followed in each run. As mentioned earlier, the results are saved in the form of a pickle file of lists in the following format *<Control matrix, Disease matrix, Gene Names, Mean squared, Variational, Knn, Community Labels, Core >*. File "Run`<Approach 1 or 2>`-i.p" is the result of the $i$-th run. </p>
+
+ ### Main3.py: Generate $I (= 25)$ CoVar networks 
+
+1. **Input:** Expression data assigned to variable $fname$ in constant.py
+2. Run Main3.py
+3. **Output:** "Run`<Approach 1 or 2>`-i.p" (i-th run)
+4. 
+### Combined analysis (Combined.py)
+
+<p align="justify"> To make a robust inference, this module finds an aggregate nearest neighbor network across the $I = 25$ runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: </p>
+
+`<Gene symbol, Cluster ID, Gene description, Frequency of that gene as core in I = 25 runs, Frequency of that gene as the nearest neighbor gene in I = 25 runs, 
+ In-degree, Out-degree, Frequency of that gene as variational in I = 25 runs, Final core Gene]>` 
+
+  ### Combined.py: Generate integrated CoVar network
+
+1. **Input:** "Run`<Approach 1 or 2>`-i.p" (i-th run)
+2. Run Combined.py
+3. **Output:** `<Comb_Trimmed_2.gml>` (CoVar network) and CoVar spreadsheet enumerating variational, nearest neighbor, and core genes.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+## 3. CoVar Project Structure
 <p align="justify"> 
  
 ### Input Data
@@ -50,41 +79,6 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
- 
-## 3. Modules
-There are two modules:
-
-### Identification of variational and core genes (Main3.py)
-
-<p align="justify"> This code eliminates lowly expressed genes and invokes the GENIE3 module to identify, separately on the control and perturbed datasets, the weights $w_{u, v} \in [0, 1]$ representing the influence of each gene $u$ on gene $v$. It then (1) marks the genes with the highest variation in network characteristics between the control and perturbed networks, (2) finds the nearest neighbor network comprising the variational genes and their nearest neighbors, and (3) identifies strongly connected clusters (or communities) within the nearest neighbor networks and core genes within each community.  </p>
-
-<p align="justify"> The above steps are followed in each run. As mentioned earlier, the results are saved in the form of a pickle file of lists in the following format *<Control matrix, Disease matrix, Gene Names, Mean squared, Variational, Knn, Community Labels, Core >*. File "Run`<Approach 1 or 2>`-i.p" is the result of the $i$-th run. </p>
-
-### Combined analysis (Combined.py)
-
-<p align="justify"> To make a robust inference, this module finds an aggregate nearest neighbor network across the $I = 25$ runs. It then finds communities within this network and core genes within each community. It finally produces a spreadsheet with the following information on the nearest neighbor genes: </p>
-
-`<Gene symbol, Cluster ID, Gene description, Frequency of that gene as core in I = 25 runs, Frequency of that gene as the nearest neighbor gene in I = 25 runs, 
- In-degree, Out-degree, Frequency of that gene as variational in I = 25 runs, Final core Gene]>` 
- 
-
- ## 4. Implementation Steps
-
- ### Main3.py: Generate $I (= 25)$ CoVar networks 
-
-1. **Input:** Expression data assigned to variable $fname$ in constant.py
-2. Run Main3.py
-3. **Output:** "Run`<Approach 1 or 2>`-i.p" (i-th run)
-
-
- ### Combined.py: Generate integrated CoVar network
-
-1. **Input:** "Run`<Approach 1 or 2>`-i.p" (i-th run)
-2. Run Combined.py
-3. **Output:** `<Comb_Trimmed_2.gml>` (CoVar network) and CoVar spreadsheet enumerating variational, nearest neighbor, and core genes.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
 At present the code employs the yeast dataset (**countMatrix2.txt**) from the study on blocking the oxidation-phosphorylation pathways [2] or a simulated expression dataset (**Main3.txt**) [3]. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
