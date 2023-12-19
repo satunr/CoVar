@@ -15,7 +15,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 ----------------------------------------------------------------------------------------------------------------------------------------
  
 ## 2. Implementation Steps
-CoVar has the following two main modules:
+<p align="justify"> Running CoVar consists of running two main scripts, Main3.py and Combined.py. The first identifies the variational and core genes for a single integration. The second combines information across multiple iterations to generate consensus variational, nearest, and core genes within consensus modules. The following are specific instructions for executing each step. </p>
 
 ### Step 1. Identification of variational and core genes 
 
@@ -35,7 +35,7 @@ CoVar has the following two main modules:
 
 **Execution Narrative**
 
-**Input.** Provide the "Run<Approach 1 or 2>-i.p" files from the Main3.py runs.
+**Input.** Provide the "Run`<Approach 1 or 2>`-i.p" files from the Main3.py runs.
 
 **Run Combined.py.** Execute the script to integrate information and generate the CoVar network.
 
