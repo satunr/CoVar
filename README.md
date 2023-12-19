@@ -15,7 +15,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 ----------------------------------------------------------------------------------------------------------------------------------------
  
 ## 2. Implementation Steps
-There are two modules:
+CoVar has the following two main modules:
 
 ### Step 1. Identification of variational and core genes 
 
