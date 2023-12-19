@@ -9,15 +9,15 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-## 1. Overview
+## A. Overview
 <p align="justify"> CoVar is a network analysis tool that leverages machine learning and network inference on genomic data, such as gene expression data. It employs the GENIE3 [1] machine learning-based network inference approach to construct a directed network, capturing regulatory interactions between genes. The tool identifies variational genes—genes showing differences in network properties between control and perturbed samples. CoVar then establishes a nearest-neighbor network of variational genes and their strongest interacting neighbors. Within this network, it defines core genes, characterized by both coordination (strong mutual interactions) and reachability (regulatory paths to nearest neighbor network genes). </p>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
  
-## 2. Implementation Steps
+## B. Implementation Steps
 <p align="justify"> Running CoVar consists of running two main scripts, Main3.py and Combined.py. The first identifies the variational and core genes for a single integration. The second combines information across multiple iterations to generate consensus variational, nearest, and core genes within consensus modules. The following are specific instructions for executing each step. </p>
 
-### Step (a). Identification of variational and core genes 
+### Step 1. Identification of variational and core genes 
 
 <p align="justify"> This script eliminates lowly expressed genes and leverages the GENIE3 module to identify the influence of each gene on others. It then marks genes with the highest variation in network characteristics, forms nearest-neighbor networks, and identifies strongly connected clusters and core genes within each community.  </p>
 
@@ -29,7 +29,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 **Output.** Save results in "Run`<Approach 1 or 2>`-i.p" files, where i represents the run number.
 
-### Step (b): Generate aggregated CoVar network
+### Step 2: Generate aggregated CoVar network
 
 <p align="justify"> This script ensures robust inference by finding an aggregate nearest neighbor network across multiple runs. It identifies communities within this network and core genes within each community. The final output is a spreadsheet with detailed information on nearest neighbor genes.</p>
 
@@ -46,7 +46,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-## 3. CoVar Project Structure
+## C. CoVar Project Structure
 <p align="justify"> 
  
 ### Input Data
