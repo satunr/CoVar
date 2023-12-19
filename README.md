@@ -17,7 +17,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 ## 2. Implementation Steps
 <p align="justify"> Running CoVar consists of running two main scripts, Main3.py and Combined.py. The first identifies the variational and core genes for a single integration. The second combines information across multiple iterations to generate consensus variational, nearest, and core genes within consensus modules. The following are specific instructions for executing each step. </p>
 
-### Step 1. Identification of variational and core genes 
+### Step (a). Identification of variational and core genes 
 
 <p align="justify"> This script eliminates lowly expressed genes and leverages the GENIE3 module to identify the influence of each gene on others. It then marks genes with the highest variation in network characteristics, forms nearest-neighbor networks, and identifies strongly connected clusters and core genes within each community.  </p>
 
@@ -29,7 +29,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 **Output.** Save results in "Run`<Approach 1 or 2>`-i.p" files, where i represents the run number.
 
-### Step 2: Generate aggregated CoVar network
+### Step (b): Generate aggregated CoVar network
 
 <p align="justify"> This script ensures robust inference by finding an aggregate nearest neighbor network across multiple runs. It identifies communities within this network and core genes within each community. The final output is a spreadsheet with detailed information on nearest neighbor genes.</p>
 
