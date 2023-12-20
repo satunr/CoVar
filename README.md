@@ -23,7 +23,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 **Input.** Ensure the combined (control and perturbed) expression data is assigned to the variable `<fname>` in constant.py. The variable `<indices>` can be modified to indicate the control and perturbed samples.
 
-**Run Main3.py.** Execute the script to perform the identification process.
+**Run Main3.py.** Execute the script to perform the identification process. `<python Main3.py>`
 
 **Output.** Save results in "Run`<Approach 1 or 2>`-i.p" files, where i represents the run number.
 
@@ -33,7 +33,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 **Input.** Provide the "Run`<Approach 1 or 2>`-i.p" files from the Main3.py runs.
 
-**Run Combined.py.** Execute the script to integrate information and generate the CoVar network.
+**Run Combined.py.** Execute the script to integrate information and generate the CoVar network. `<python Combined.py>`
 
 **Output.** Obtain `<Comb_Trimmed_2.gml>` (CoVar network) and a spreadsheet enumerating variational, nearest neighbor, and core genes. The `<.gml>` file can be opened using any visualization software to generate a network diagram.
 
