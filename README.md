@@ -10,7 +10,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 ## A. Overview
-<p align="justify"> CoVar is a network analysis tool that leverages machine learning and network inference on genomic data, such as gene expression data. It employs the GENIE3 [1] machine learning-based network inference approach to construct a directed network, capturing regulatory interactions between genes. The tool identifies variational genes—genes showing differences in network properties between control and perturbed samples. CoVar then establishes a nearest-neighbor network of variational genes and their strongest interacting neighbors. Within this network, it defines core genes, characterized by both coordination (strong mutual interactions) and reachability (regulatory paths to nearest neighbor network genes). </p>
+<p align="justify"> CoVar is a network analysis tool that leverages machine learning and network inference on genomic data, such as gene expression data. It employs the GENIE3 [1] machine learning-based network inference approach to construct a directed network, capturing regulatory interactions between genes. The tool identifies variational genes showing differences in network properties between control and perturbed samples. CoVar establishes a nearest-neighbor network of variational genes and their strongest interacting neighbors. This network defines core genes, characterized by coordination (strong mutual interactions) and reachability (regulatory paths to nearest neighbor network genes). </p>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
  
@@ -21,7 +21,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 <p align="justify"> This script eliminates lowly expressed genes and leverages the GENIE3 module to identify the influence of each gene on others. It then marks genes with the highest variation in network characteristics, forms nearest-neighbor networks, and identifies strongly connected clusters and core genes within each community.  </p>
 
-**Input.** Ensure the expression data is assigned to the variable 'fname' in constant.py.
+**Input.** Ensure the combined (control and perturbed) expression data is assigned to the variable `<fname>` in constant.py. The variable `<indices>` can be modified to indicate the control and perturbed samples.
 
 **Run Main3.py.** Execute the script to perform the identification process.
 
@@ -35,7 +35,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 **Run Combined.py.** Execute the script to integrate information and generate the CoVar network.
 
-**Output.** Obtain `<Comb_Trimmed_2.gml>` (CoVar network) and a spreadsheet enumerating variational, nearest neighbor, and core genes.
+**Output.** Obtain `<Comb_Trimmed_2.gml>` (CoVar network) and a spreadsheet enumerating variational, nearest neighbor, and core genes. The `<.gml>` file can be opened using any visualization software to generate a network diagram.
 
 <p align="justify">By following these steps, you can effectively run CoVar, extracting valuable insights into variational and core genes across multiple iterations. The combination of Main3.py and Combined.py ensures a comprehensive analysis, providing a deeper understanding of biological networks.</p>
 
