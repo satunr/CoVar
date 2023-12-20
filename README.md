@@ -21,7 +21,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 
 <p align="justify"> This script eliminates lowly expressed genes and leverages the GENIE3 module to identify the influence of each gene on others. It then marks genes with the highest variation in network characteristics, forms nearest-neighbor networks, and identifies strongly connected clusters and core genes within each community.  </p>
 
-**Input.** Ensure the combined (control and perturbed) expression data is assigned to the variable `<fname>` in constant.py. The variable `<indices>` can be modified to indicate the control and perturbed samples.
+**Input.** Ensure the combined (control and perturbed) expression data is assigned to the variable `<fname>` in constant.py. The variable `<indices>` can be used to indicate the control and perturbed samples.
 
 **Run Main3.py.** Execute the script to perform the identification process. `<python Main3.py>`
 
