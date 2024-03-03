@@ -81,16 +81,26 @@ Run. 0
 Expression matrix has a shape (20 samples, 200 genes)
 
 There are 200 shortlisted genes.
-running jobs on 10 threads
-Elapsed time: 74.94 seconds
-Count matrix shape (200, 200)
-Number of links:  39800
-200 39800
 
 running jobs on 10 threads
-Elapsed time: 71.06 seconds
+
+Elapsed time: 74.94 seconds
+
 Count matrix shape (200, 200)
+
 Number of links:  39800
+
+200 39800
+
+
+running jobs on 10 threads
+
+Elapsed time: 71.06 seconds
+
+Count matrix shape (200, 200)
+
+Number of links:  39800
+
 200 39800
 
 Variational nodes are: ['52', '58', '100', '114', '130', '132', '136', '146']
