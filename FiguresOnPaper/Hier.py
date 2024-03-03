@@ -83,7 +83,7 @@ def read(M):
 
 # Input expression data (fname) and output 
 # dendrogram showing the clusters based 
-on hierarchical clustering
+# on hierarchical clustering
 
 fname = 'Meta.txt'
 gene_expression_data, g_names = readf(fname)
