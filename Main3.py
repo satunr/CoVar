@@ -169,7 +169,7 @@ def main(ind):
     pickle.dump(GList, open('GList-Macro-a-' + str(ind) + '.p', 'wb'))
 
 
-for ind in range(20, how_many_runs):
+for ind in range(how_many_runs):
     # Each run
     print ('Run.', ind)
     main(ind)
