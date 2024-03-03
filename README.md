@@ -75,7 +75,7 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 #### `Combined.py`
 - Given individual sample runs, determine nearest neighbor and core genes based on the combination of runs.</p>
 
-# Example run on synthetic expression data of 20 samples and 200 genes.
+## Example run on synthetic expression data of 20 samples and 200 genes.
 
 Run. 0
 Expression matrix has a shape (20 samples, 200 genes)
@@ -108,7 +108,7 @@ Variational nodes are: ['52', '58', '100', '114', '130', '132', '136', '146']
 The nearest neighbor network has 12 nodes and 37 edges
 
 
-Module-wise genes. [['98', '80', '90', '56', '62', '76'], ['84', '54']]
+## Module-wise genes. [['98', '80', '90', '56', '62', '76'], ['84', '54']]
 ----------------------------------------------------------------------------------------------------------------------------------------
 At present the code employs the yeast dataset (**countMatrix2.txt**) from the study on blocking the oxidation-phosphorylation pathways [2] or a simulated expression dataset (**Main3.txt**) [3]. 
 
