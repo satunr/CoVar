@@ -103,6 +103,8 @@ def main(ind):
     print (len(g_names), np.shape(data))
     # exit(1)
 
+    # check_presence(g_names, ['DEFA5', 'DEFA6', 'REG1A', 'REG3A', 'CXCL5'])
+
     # STEP 3: Normalize dataset
     data[-1, :] += 0.01
     noise = np.random.normal(0, 0.0000001, data.shape)
@@ -144,8 +146,7 @@ def main(ind):
 
     # STEP 5: Find k-nearest neighbor graph on disease graph
     knn = nearest2(dis, vg, K, approach)
-    print ('The nearest neighbor network has %d nodes and %d edges', (len(knn), len(knn.edges())))
-
+    print ('The nearest neighbor network has %d nodes and %d edges' % (len(knn), len(knn.edges())))
     GList.append(knn)
 
     # Find communities
@@ -193,6 +194,3 @@ for ind in range(20, how_many_runs):
     Knn = color_nodes(Knn, Cr, labels)
     # nx.write_gml(Knn, 'Knn.gml')
     '''
-
-
-
