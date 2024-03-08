@@ -75,10 +75,10 @@ __email__ = "satyakir@unc.edu, shehzad_sheikh@med.unc.edu, and tsfurey@email.unc
 #### `Combined.py`
 - Given individual sample runs, determine nearest neighbor and core genes based on the combination of runs.</p>
 
-## Example run on synthetic expression data of 20 samples and 200 genes.
+## D. An example run on synthetic expression data of 20 samples and 200 genes.
 
 Run. 0
-Expression matrix has a shape (20 samples, 200 genes)
+The expression matrix [FiguresOnPaper/Meta3.txt] has a shape (20 samples, 200 genes)
 
 There are 200 shortlisted genes.
 
